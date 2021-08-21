@@ -67,9 +67,19 @@ function getDeliveryCost( option ) {
 }
 
 function calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost ) {
-    const totalPriceFiled = document.getElementById( 'total-price' );
-    totalPriceFiled.innerText = bestPrice + extraMemoryCost + extraStorageCost + deliveryCost;
-    document.getElementById( 'final-total' ).innerText = totalPriceFiled.innerText;
+    const totalPriceField = document.getElementById( 'total-price' );
+    totalPriceField.innerText = bestPrice + extraMemoryCost + extraStorageCost + deliveryCost;
+    const finalTotalFiled = document.getElementById( 'final-total' );
+
+    const applyButton = document.getElementById( 'apply-button' );
+    console.log( applyButton );
+    if ( applyButton.disabled == true ) {
+        finalTotalFiled.innerText = parseFloat( totalPriceField.innerText ) * 0.8;
+    }
+    else {
+        finalTotalFiled.innerText = totalPriceField.innerText;
+    }
+
 }
 
 function getRequiredProductCost( productFieldId ) {
@@ -79,12 +89,11 @@ function getRequiredProductCost( productFieldId ) {
     return extraProductCost;
 }
 
-document.getElementById( 'memory-8-button' ).addEventListener( 'click', function () {
+document.getElementById( 'memory-8-button' ).addEventListener( 'click', function ( event ) {
     const bestPrice = getBestPrice();
     const extraMemoryCost = getMemoryCost( 8 );
     const extraStorageCost = getRequiredProductCost( 'extra-storage-cost' );
     const deliveryCost = getRequiredProductCost( 'delivery-cost' );
-
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
 } );
 
@@ -93,7 +102,6 @@ document.getElementById( 'memory-16-button' ).addEventListener( 'click', functio
     const extraMemoryCost = getMemoryCost( 16 );
     const extraStorageCost = getRequiredProductCost( 'extra-storage-cost' );
     const deliveryCost = getRequiredProductCost( 'delivery-cost' );
-
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
 } );
 
@@ -102,7 +110,6 @@ document.getElementById( 'storage-256-button' ).addEventListener( 'click', funct
     const extraMemoryCost = getRequiredProductCost( 'extra-memory-cost' );
     const extraStorageCost = getStorageCost( 256 );
     const deliveryCost = getRequiredProductCost( 'delivery-cost' );
-
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
 } );
 
@@ -111,7 +118,6 @@ document.getElementById( 'storage-512-button' ).addEventListener( 'click', funct
     const extraMemoryCost = getRequiredProductCost( 'extra-memory-cost' );
     const extraStorageCost = getStorageCost( 512 );
     const deliveryCost = getRequiredProductCost( 'delivery-cost' );
-
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
 } );
 
@@ -120,7 +126,6 @@ document.getElementById( 'storage-1tb-button' ).addEventListener( 'click', funct
     const extraMemoryCost = getRequiredProductCost( 'extra-memory-cost' );
     const extraStorageCost = getStorageCost( 1024 );
     const deliveryCost = getRequiredProductCost( 'delivery-cost' );
-
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
 
 } );
@@ -130,7 +135,6 @@ document.getElementById( 'free-delivery-button' ).addEventListener( 'click', fun
     const extraMemoryCost = getRequiredProductCost( 'extra-memory-cost' );
     const extraStorageCost = getRequiredProductCost( 'extra-storage-cost' );
     const deliveryCost = getDeliveryCost( 'free' );
-
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
 } );
 
@@ -139,6 +143,23 @@ document.getElementById( 'charged-delivery-button' ).addEventListener( 'click', 
     const extraMemoryCost = getRequiredProductCost( 'extra-memory-cost' );
     const extraStorageCost = getRequiredProductCost( 'extra-storage-cost' );
     const deliveryCost = getDeliveryCost( 'charged' );
-
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
+} );
+
+document.getElementById( 'apply-button' ).addEventListener( 'click', function ( event ) {
+    const promoCodeInputField = document.getElementById( 'promo-code-input' );
+    const promoCodeInputText = promoCodeInputField.value;
+    promoCodeInputField.value = '';
+
+    if ( promoCodeInputText == 'stevekaku' ) {
+        const finalTotalField = document.getElementById( 'final-total' );
+        const finalTotalText = finalTotalField.innerText;
+        const finalTotal = parseFloat( finalTotalText );
+        finalTotalField.innerText = finalTotal * 0.8;
+        event.target.disabled = true;
+    }
+    else {
+        alert( 'WRONG PROMO CODE!!!' );
+    }
+
 } );

@@ -112,13 +112,37 @@ function getRequiredProductCost( productFieldId ) {
     return extraProductCost;
 }
 
+//Clicked button design for memory and delivery button
+function clickedButtonDesign( clickedButtonId, otherButtonId ) {
+    const clickedButton = document.getElementById( clickedButtonId );
+    clickedButton.style.backgroundColor = 'skyblue';
+    clickedButton.style.color = 'white';
+    const otherButton = document.getElementById( otherButtonId );
+    otherButton.style.backgroundColor = 'white';
+    clickedButton.style.color = 'black';
+}
+
+//Clicked button design for storage buttons
+function storageButtonDesign( clickedButtonId, otherButtonId1, otherButtonId2 ) {
+    const clickedButton = document.getElementById( clickedButtonId );
+    clickedButton.style.backgroundColor = 'skyblue';
+    clickedButton.style.color = 'white';
+    const otherButton1 = document.getElementById( otherButtonId1 );
+    otherButton1.style.backgroundColor = 'white';
+    clickedButton.style.color = 'black';
+    const otherButton2 = document.getElementById( otherButtonId2 );
+    otherButton2.style.backgroundColor = 'white';
+    clickedButton.style.color = 'black';
+}
+
 //Event handler for 8GB Unified Memory Button
-document.getElementById( 'memory-8-button' ).addEventListener( 'click', function ( event ) {
+document.getElementById( 'memory-8-button' ).addEventListener( 'click', function () {
     const bestPrice = getBestPrice();
     const extraMemoryCost = getMemoryCost( 8 );
     const extraStorageCost = getRequiredProductCost( 'extra-storage-cost' );
     const deliveryCost = getRequiredProductCost( 'delivery-cost' );
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
+    clickedButtonDesign( 'memory-8-button', 'memory-16-button' );
 } );
 
 //Event handler for 16GB Unified Memory Button
@@ -128,6 +152,7 @@ document.getElementById( 'memory-16-button' ).addEventListener( 'click', functio
     const extraStorageCost = getRequiredProductCost( 'extra-storage-cost' );
     const deliveryCost = getRequiredProductCost( 'delivery-cost' );
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
+    clickedButtonDesign( 'memory-16-button', 'memory-8-button' );
 } );
 
 //Event handler for 256GB SSD Storage Button
@@ -137,6 +162,7 @@ document.getElementById( 'storage-256-button' ).addEventListener( 'click', funct
     const extraStorageCost = getStorageCost( 256 );
     const deliveryCost = getRequiredProductCost( 'delivery-cost' );
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
+    storageButtonDesign( 'storage-256-button', 'storage-512-button', 'storage-1tb-button' );
 } );
 
 //Event handler for 512GB SSD Storage Button
@@ -146,6 +172,7 @@ document.getElementById( 'storage-512-button' ).addEventListener( 'click', funct
     const extraStorageCost = getStorageCost( 512 );
     const deliveryCost = getRequiredProductCost( 'delivery-cost' );
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
+    storageButtonDesign( 'storage-512-button', 'storage-256-button', 'storage-1tb-button' );
 } );
 
 //Event handler for 1TB SSD Storage Button
@@ -155,7 +182,7 @@ document.getElementById( 'storage-1tb-button' ).addEventListener( 'click', funct
     const extraStorageCost = getStorageCost( 1024 );
     const deliveryCost = getRequiredProductCost( 'delivery-cost' );
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
-
+    storageButtonDesign( 'storage-1tb-button', 'storage-256-button', 'storage-512-button' );
 } );
 
 //Event handler for Free Delivery Button
@@ -165,6 +192,7 @@ document.getElementById( 'free-delivery-button' ).addEventListener( 'click', fun
     const extraStorageCost = getRequiredProductCost( 'extra-storage-cost' );
     const deliveryCost = getDeliveryCost( 'free' );
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
+    clickedButtonDesign( 'free-delivery-button', 'charged-delivery-button' );
 } );
 
 //Event handler for Charged Delivery Button
@@ -174,6 +202,7 @@ document.getElementById( 'charged-delivery-button' ).addEventListener( 'click', 
     const extraStorageCost = getRequiredProductCost( 'extra-storage-cost' );
     const deliveryCost = getDeliveryCost( 'charged' );
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
+    clickedButtonDesign( 'charged-delivery-button', 'free-delivery-button' );
 } );
 
 //Event handler for promo code Apply button

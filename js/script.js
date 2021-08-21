@@ -222,5 +222,6 @@ document.getElementById( 'apply-button' ).addEventListener( 'click', function ( 
         const finalTotal = parseFloat( finalTotalText );
         finalTotalField.innerText = finalTotal * 0.8;
         event.target.disabled = true;
+        event.target.style.backgroundColor = 'gray';
     }
 } );

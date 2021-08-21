@@ -1,1 +1,0 @@
-# mac-book-pro-samimeadad

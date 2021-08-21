@@ -176,8 +176,9 @@ document.getElementById( 'charged-delivery-button' ).addEventListener( 'click', 
     calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost );
 } );
 
-//Event handler for Apply button for promo code
+//Event handler for promo code Apply button
 document.getElementById( 'apply-button' ).addEventListener( 'click', function ( event ) {
+    //collect the promo code text from the input field
     const promoCodeInputField = document.getElementById( 'promo-code-input' );
     const promoCodeInputText = promoCodeInputField.value;
     promoCodeInputField.value = '';

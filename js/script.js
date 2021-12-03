@@ -1,17 +1,17 @@
 //Function to collect the best price from the html page
-function getBestPrice() {
+function getBestPrice () {
     //get the Best Price field by its Id
     const bestPriceField = document.getElementById( 'best-price' );
     //get the inner text from the field
     const bestPriceText = bestPriceField.innerText;
     //convert the price into floating point number
     const bestPrice = parseFloat( bestPriceText );
-    //return the Best Price wherever the funciotn is called
+    //return the Best Price wherever the function is called
     return bestPrice;
 }
 
 //Function to calculate the memory cost according to memory capacity and price
-function calculateMemoryCost( price ) {
+function calculateMemoryCost ( price ) {
     const memoryCostField = document.getElementById( 'extra-memory-cost' );
     memoryCostField.innerText = price;
     const memoryCostText = memoryCostField.innerText;
@@ -20,7 +20,7 @@ function calculateMemoryCost( price ) {
 }
 
 //Function to collect the memory cost from the html page
-function getMemoryCost( memory ) {
+function getMemoryCost ( memory ) {
     // validation for 8GB memory
     if ( memory == 8 ) {
         const extraMemoryCost = calculateMemoryCost( 0 );
@@ -34,7 +34,7 @@ function getMemoryCost( memory ) {
 }
 
 //Function to calculate the storage cost according to storage capacity and price
-function calculateStorageCost( price ) {
+function calculateStorageCost ( price ) {
     const storageCostField = document.getElementById( 'extra-storage-cost' );
     storageCostField.innerText = price;
     const storageCostText = storageCostField.innerText;
@@ -43,7 +43,7 @@ function calculateStorageCost( price ) {
 }
 
 //Function to collect the storage cost from the html page
-function getStorageCost( storage ) {
+function getStorageCost ( storage ) {
     // validation for 256GB SSD Storage
     if ( storage == 256 ) {
         const extraStorageCost = calculateStorageCost( 0 );
@@ -62,7 +62,7 @@ function getStorageCost( storage ) {
 }
 
 //Function to calculate the delivery cost according to delivery plan
-function calculateDeliveryCost( price ) {
+function calculateDeliveryCost ( price ) {
     const deliveryCostField = document.getElementById( 'delivery-cost' );
     deliveryCostField.innerText = price;
     const deliveryCostText = deliveryCostField.innerText;
@@ -71,7 +71,7 @@ function calculateDeliveryCost( price ) {
 }
 
 //Function to collect the delivery cost from the html page
-function getDeliveryCost( option ) {
+function getDeliveryCost ( option ) {
     // validation for free delivery
     if ( option == 'free' ) {
         const deliveryCost = calculateDeliveryCost( 0 );
@@ -85,7 +85,7 @@ function getDeliveryCost( option ) {
 }
 
 //Function to calculate the total price and Final Price with and without promocode
-function calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost ) {
+function calculateTotalPrice ( bestPrice, extraMemoryCost, extraStorageCost, deliveryCost ) {
     const totalPriceField = document.getElementById( 'total-price' );
     totalPriceField.innerText = bestPrice + extraMemoryCost + extraStorageCost + deliveryCost;
     const finalTotalFiled = document.getElementById( 'final-total' );
@@ -105,7 +105,7 @@ function calculateTotalPrice( bestPrice, extraMemoryCost, extraStorageCost, deli
 }
 
 //Collect the price of other products when calculate a product price associated with the button clicked
-function getRequiredProductCost( productFieldId ) {
+function getRequiredProductCost ( productFieldId ) {
     const extraProductCostField = document.getElementById( productFieldId );
     const extraProductCostText = extraProductCostField.innerText;
     const extraProductCost = parseFloat( extraProductCostText );
@@ -113,7 +113,7 @@ function getRequiredProductCost( productFieldId ) {
 }
 
 //Clicked button design for memory and delivery button
-function clickedButtonDesign( clickedButtonId, otherButtonId ) {
+function clickedButtonDesign ( clickedButtonId, otherButtonId ) {
     const clickedButton = document.getElementById( clickedButtonId );
     clickedButton.style.backgroundColor = 'skyblue';
     clickedButton.style.color = 'white';
@@ -123,7 +123,7 @@ function clickedButtonDesign( clickedButtonId, otherButtonId ) {
 }
 
 //Clicked button design for storage buttons
-function storageButtonDesign( clickedButtonId, otherButtonId1, otherButtonId2 ) {
+function storageButtonDesign ( clickedButtonId, otherButtonId1, otherButtonId2 ) {
     const clickedButton = document.getElementById( clickedButtonId );
     clickedButton.style.backgroundColor = 'skyblue';
     clickedButton.style.color = 'white';
@@ -212,7 +212,7 @@ document.getElementById( 'apply-button' ).addEventListener( 'click', function ( 
     const promoCodeInputText = promoCodeInputField.value;
     promoCodeInputField.value = '';
 
-    //validatoin of promo code with pre-defined code 'stevekaku'
+    //validation of promo code with pre-defined code 'stevekaku'
     if ( promoCodeInputText != 'stevekaku' ) {
         alert( 'WRONG PROMO CODE!!!' );
     }
